@@ -36,4 +36,30 @@ public class App {
 
         }
     }
+
+    /**
+     * Tìm tất cả các địa chỉ email có trong chuỗi văn bản đầu vào text
+     * Định nghĩa email:
+     * Bắt đầu bằng chữ cái.
+     * Chỉ chứa chữ cái, chữ số, dấu gạch ngang -
+     * Chứa một ký tự @, sau @ là tên miền.
+     * Tên miền có thể là domain.xxx.yyy hoặc domain.xxx. Trong đó xxx và yyy là các chữ cái và có độ dài từ 2 trở lên.
+     */
+
+    public static void checkEmail() {
+        String regex = "\\b[a-zA-Z][\\w\\.]*@\\w+\\.[a-zA-Z]{2,}(\\.[a-zA-Z]{2,})?\\b";
+        String input = "joyhoang@gmail.com, 123joy@mail.com.vn";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(input);
+
+        boolean matchFound = m.find();
+        while (matchFound) {
+            String phone = input.substring(m.start(), m.end());
+            System.out.println(phone);
+            matchFound = m.find();
+
+
+        }
+    }
+
 }
